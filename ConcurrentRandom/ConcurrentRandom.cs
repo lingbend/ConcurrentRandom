@@ -7,6 +7,13 @@ namespace ConcurrentRandom
     using System.Linq;
     using static Medallion.Bits;
 
+    // Partly based on the public domain xoshiro128++ algorithm by David Blackman and 
+    // Sebastiano Vigna. Please see https://prng.di.unimi.it/xoshiro128plusplus.c 
+    // (current as of 5/2026).
+    
+    // This random number generator is designed to be thread-safe, thread deterministic, and
+    // performant. In order to get the best results, each call should pass a unique state
+    // to the generator.
     public class ConcurrentRandom
     {
         private int _seed_1 = 0;
